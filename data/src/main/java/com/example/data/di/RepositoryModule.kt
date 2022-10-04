@@ -2,6 +2,7 @@ package com.example.data.di
 
 import android.content.Context
 import com.example.data.api.ApiService
+import com.example.data.db.UserDao
 import com.example.data.repository.UsersRepositoryImpl
 import com.example.domain.repository.UsersRepository
 import dagger.Module
@@ -20,7 +21,8 @@ object RepositoryModule {
     fun providePicsumRepository(
         @ApplicationContext context: Context,
         service: ApiService,
+        userDao: UserDao,
     ): UsersRepository {
-        return UsersRepositoryImpl(context, service)
+        return UsersRepositoryImpl(context, service, userDao)
     }
 }

@@ -15,4 +15,16 @@ class UsersUseCase @Inject constructor(private val repository: UsersRepository) 
     fun fetchList(rq: User.RQ): Flow<PagingData<User.Item>> {
         return repository.fetchList(rq)
     }
+
+    fun fetchLocalList(rq: User.RQ): Flow<PagingData<User.Item>> {
+        return repository.fetchLocalList(rq)
+    }
+
+    suspend fun addUser(item: User.Item) {
+        repository.addUser(item)
+    }
+
+    suspend fun removeUser(item: User.Item) {
+        repository.removeUser(item)
+    }
 }

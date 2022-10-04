@@ -1,13 +1,17 @@
 package com.example.domain.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 object User {
     class RQ(var value: String)
 
     class RS(var total_count: Int, var incomplete_results: Boolean, var items: Array<Item>)
 
-    class Item(
+    @Entity(tableName = "user")
+    data class Item(
         var login: String,
-        var id: Int,
+        @PrimaryKey var id: Int,
         var node_id: String,
         var avatar_url: String,
         var gravatar_id: String,
@@ -25,5 +29,11 @@ object User {
         var starred_url: String,
         var events_url: String,
         var site_admin: Boolean
-    )
+    ) {
+        companion object {
+            val DEFAULT = Item(
+                "", 0, "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", false
+            )
+        }
+    }
 }
