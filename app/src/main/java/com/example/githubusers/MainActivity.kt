@@ -2,13 +2,13 @@ package com.example.githubusers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.NavHostFragment
 import com.example.githubusers.databinding.ActivityMainBinding
-import com.example.githubusers.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
+
+    val viewModel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,14 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        viewModel.moveValue.observe(this) {
+            if (it == R.id.btn_api) {
+                navigateSafe(R.id.action_navigation_local_to_navigation_main)
+            } else if (it == R.id.btn_local) {
+                navigateSafe(R.id.action_navigation_main_to_navigation_local)
+            }
+        }
     }
 
     fun navigateSafe(

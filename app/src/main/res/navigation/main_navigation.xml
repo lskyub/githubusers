@@ -9,6 +9,17 @@
         android:id="@+id/navigation_main"
         android:name="com.example.githubusers.ui.main.MainFragment"
         android:label="MainFragment">
+        <action
+            android:id="@+id/action_navigation_main_to_navigation_local"
+            app:destination="@id/navigation_local" />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_local"
+        android:name="com.example.githubusers.ui.main.LocalFragment"
+        android:label="LocalFragment">
+        <action
+            android:id="@+id/action_navigation_local_to_navigation_main"
+            app:destination="@id/navigation_main" />
+    </fragment>
 </navigation>

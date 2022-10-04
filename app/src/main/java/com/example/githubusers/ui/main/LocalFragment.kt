@@ -3,16 +3,20 @@ package com.example.githubusers.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import com.example.domain.model.User
 import com.example.githubusers.R
 import com.example.githubusers.adapter.OnItemClickListener
+import com.example.githubusers.databinding.FragmentLocalBinding
 import com.example.githubusers.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainFragment : BindingFragment<FragmentMainBinding, MainViewModel>(R.layout.fragment_main) {
+class LocalFragment :
+    BindingFragment<FragmentLocalBinding, LocalViewModel>(R.layout.fragment_local) {
 
-    override val viewModel: MainViewModel by viewModels()
+    override val viewModel: LocalViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
