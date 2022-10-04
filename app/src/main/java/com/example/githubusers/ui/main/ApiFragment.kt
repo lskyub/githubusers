@@ -9,6 +9,9 @@ import com.example.githubusers.adapter.OnItemClickListener
 import com.example.githubusers.databinding.FragmentApiBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Api 통신으로 리스트를 그리는 fragment
+ */
 @AndroidEntryPoint
 class ApiFragment : BindingFragment<FragmentApiBinding, ApiViewModel>(R.layout.fragment_api) {
 

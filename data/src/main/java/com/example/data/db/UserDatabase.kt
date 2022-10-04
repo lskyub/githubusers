@@ -7,6 +7,9 @@ import com.example.domain.model.User
 import kotlinx.coroutines.runBlocking
 import java.util.concurrent.Executors
 
+/**
+ * 유저 정보를 저장하는 로컬 DB
+ */
 @Dao
 interface UserDao {
 

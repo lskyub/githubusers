@@ -7,6 +7,10 @@ import com.example.data.db.UserDao
 import com.example.domain.Constants
 import com.example.domain.model.User
 
+/**
+ * aac paging을 사용하는 클래스
+ * api 에서 리스트 정보를 가져오기 위해 사용
+ */
 class UsersSource(
     private val api: ApiService,
     private val userDao: UserDao,

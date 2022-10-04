@@ -26,6 +26,9 @@ class UsersRepositoryImpl @Inject constructor(
         return api.users(rq.value)
     }
 
+    /**
+     * api 유저 리스트 가져오기
+     */
     override fun fetchList(rq: User.RQ): Flow<PagingData<User.Item>> {
         return Pager(
             config = PagingConfig(Constants.DEFAULT_LIMIT, enablePlaceholders = false),
@@ -33,6 +36,9 @@ class UsersRepositoryImpl @Inject constructor(
         ).flow
     }
 
+    /**
+     * db 유저 리스트 가져오기
+     */
     override fun fetchLocalList(rq: User.RQ): Flow<PagingData<User.Item>> {
         return Pager(
             config = PagingConfig(Constants.DEFAULT_LIMIT, enablePlaceholders = false),
@@ -40,10 +46,16 @@ class UsersRepositoryImpl @Inject constructor(
         ).flow
     }
 
+    /**
+     * db 유저 추가
+     */
     override suspend fun addUser(item: User.Item) {
         userDao.addUser(item)
     }
 
+    /**
+     * db 유저 삭제
+     */
     override suspend fun removeUser(item: User.Item) {
         userDao.removeUser(item)
     }

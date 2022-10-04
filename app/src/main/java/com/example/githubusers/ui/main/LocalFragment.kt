@@ -9,6 +9,9 @@ import com.example.githubusers.adapter.OnItemClickListener
 import com.example.githubusers.databinding.FragmentLocalBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * 로컬 DB 리스트를 그리는 fragment
+ */
 @AndroidEntryPoint
 class LocalFragment :
     BindingFragment<FragmentLocalBinding, LocalViewModel>(R.layout.fragment_local) {

@@ -6,6 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * 통신 인터페이스
+ */
 interface ApiService {
     @GET("search/users")
     suspend fun users(
