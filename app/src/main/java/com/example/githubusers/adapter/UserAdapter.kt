@@ -22,7 +22,7 @@ class UserAdapter :
     PagingDataAdapter<User.Item, UserAdapter.ViewHolder>(
         object : DiffUtil.ItemCallback<User.Item>() {
             override fun areItemsTheSame(oldItem: User.Item, newItem: User.Item): Boolean {
-                return oldItem.id == newItem.id && oldItem.node_id == newItem.node_id
+                return oldItem.id == newItem.id && oldItem.login == newItem.login
             }
 
             override fun areContentsTheSame(oldItem: User.Item, newItem: User.Item): Boolean {
