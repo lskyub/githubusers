@@ -3,9 +3,9 @@ package com.example.domain.model
 object User {
     class RQ(var value: String)
 
-//    class RS(var total_count: Int, var incomplete_results: Boolean, var items: Array<Item>)
+    class RS(var total_count: Int, var incomplete_results: Boolean, var items: Array<Item>)
 
-    class RS(
+    class Item(
         var login: String,
         var id: Int,
         var node_id: String,

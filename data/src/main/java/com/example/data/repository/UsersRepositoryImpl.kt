@@ -18,11 +18,11 @@ class UsersRepositoryImpl @Inject constructor(
     val applicationContext: Context,
     private val api: ApiService
 ) : UsersRepository {
-    override suspend fun search(rq: User.RQ): Response<Array<User.RS>> {
+    override suspend fun search(rq: User.RQ): Response<User.RS> {
         return api.users(rq.value)
     }
 
-    override fun fetchList(rq: User.RQ): Flow<PagingData<User.RS>> {
+    override fun fetchList(rq: User.RQ): Flow<PagingData<User.Item>> {
         return Pager(
             config = PagingConfig(Constants.DEFAULT_LIMIT, enablePlaceholders = false),
             pagingSourceFactory = { UsersSource(api, rq) }

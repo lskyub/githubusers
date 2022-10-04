@@ -7,16 +7,16 @@ import com.example.domain.Constants
 import com.example.domain.model.User
 
 class UsersSource(private val api: ApiService, private val rq: User.RQ) :
-    PagingSource<Int, User.RS>() {
-    override fun getRefreshKey(state: PagingState<Int, User.RS>): Int {
+    PagingSource<Int, User.Item>() {
+    override fun getRefreshKey(state: PagingState<Int, User.Item>): Int {
         return 0
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User.RS> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User.Item> {
         return try {
             val page = params.key ?: 1
-            val results = api.users(rq.value, page, Constants.DEFAULT_LIMIT).body()?.toMutableList()
-            results?.run {
+            val results = api.users(rq.value, page, Constants.DEFAULT_LIMIT).body()
+            results?.items?.toMutableList()?.run {
                 val nextPage = if (count() == Constants.DEFAULT_LIMIT) page + 1 else null
                 LoadResult.Page(data = this, nextKey = nextPage, prevKey = null)
             } ?: LoadResult.Error(NullPointerException())

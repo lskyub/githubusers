@@ -18,13 +18,13 @@ interface OnItemClickListener {
 }
 
 class UserAdapter :
-    PagingDataAdapter<User.RS, UserAdapter.ViewHolder>(
-        object : DiffUtil.ItemCallback<User.RS>() {
-            override fun areItemsTheSame(oldItem: User.RS, newItem: User.RS): Boolean {
+    PagingDataAdapter<User.Item, UserAdapter.ViewHolder>(
+        object : DiffUtil.ItemCallback<User.Item>() {
+            override fun areItemsTheSame(oldItem: User.Item, newItem: User.Item): Boolean {
                 return oldItem.id == newItem.id && oldItem.node_id == newItem.node_id
             }
 
-            override fun areContentsTheSame(oldItem: User.RS, newItem: User.RS): Boolean {
+            override fun areContentsTheSame(oldItem: User.Item, newItem: User.Item): Boolean {
                 return oldItem.id == newItem.id && oldItem.toString() == newItem.toString()
             }
         }) {

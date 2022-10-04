@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface UsersRepository {
-    suspend fun search(rq: User.RQ): Response<Array<User.RS>>
+    suspend fun search(rq: User.RQ): Response<User.RS>
 
-    fun fetchList(rq: User.RQ): Flow<PagingData<User.RS>>
+    fun fetchList(rq: User.RQ): Flow<PagingData<User.Item>>
 }
