@@ -1,5 +1,6 @@
 package com.example.githubusers
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,24 +23,18 @@ class MainViewModel @Inject constructor(
 
     val moveValue = MutableLiveData(0)
 
+    var onClick: ((String) -> Unit)? = null
+
     override fun onClick(v: View?) {
         if (v?.id == R.id.btn_search) {
             viewModelScope.launch {
                 searchValue.value?.also { value ->
-                    useCase.fetchList(User.RQ(value)).collectLatest {
-                        adapter.submitData(it)
-                    }
+                    onClick?.invoke(value)
                 }
             }
         } else {
             moveValue.value = v?.id
         }
-    }
-
-    val adapter = UserAdapter()
-
-    fun setAdapter(listener: OnItemClickListener) {
-        adapter.listener = listener
     }
 
     fun addUser(item: User.Item) {

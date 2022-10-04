@@ -15,7 +15,7 @@ class UsersLocalSource(private val userDao: UserDao, private val rq: User.RQ) :
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User.Item> {
         return try {
             val page = params.key ?: 1
-            val results = userDao.getAllUsers()
+            val results = userDao.getUsers("%${rq.value}%")
             results.toMutableList().run {
                 this.sortBy { item -> item.login }
                 val nextPage = if (count() == Constants.DEFAULT_LIMIT) page + 1 else null

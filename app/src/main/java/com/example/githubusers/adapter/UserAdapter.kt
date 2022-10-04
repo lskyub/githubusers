@@ -15,7 +15,7 @@ import com.example.githubusers.R
 import com.example.githubusers.BR
 
 interface OnItemClickListener {
-    fun onClick(v: View?, item: User.Item, isCheck: Boolean, position: Int)
+    fun onClick(v: View?, item: User.Item, position: Int)
 }
 
 class UserAdapter :
@@ -46,12 +46,14 @@ class UserAdapter :
                 }
             )
             holder.binding.setVariable(BR.item, item)
+            holder.favorites.isChecked = item.favorites
             holder.binding.setVariable(BR.listener, object : View.OnClickListener {
                 override fun onClick(v: View?) {
-                    holder.favorites.isChecked = !holder.favorites.isChecked
+                    holder.favorites.isChecked = !item.favorites
+                    item.favorites = !item.favorites
                     if (::listener.isInitialized) {
                         getItem(holder.bindingAdapterPosition)?.id?.also {
-                            listener.onClick(v, item, holder.favorites.isChecked, it)
+                            listener.onClick(v, item, it)
                         }
                     }
                 }

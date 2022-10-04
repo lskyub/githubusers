@@ -28,11 +28,12 @@ object User {
         var gists_url: String,
         var starred_url: String,
         var events_url: String,
-        var site_admin: Boolean
+        var site_admin: Boolean,
+        var favorites: Boolean
     ) {
         companion object {
             val DEFAULT = Item(
-                "", 0, "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", false
+                "", 0, "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", false, false
             )
         }
     }

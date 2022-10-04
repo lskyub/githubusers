@@ -16,15 +16,16 @@ class ApiFragment : BindingFragment<FragmentApiBinding, ApiViewModel>(R.layout.f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedViewModel.setAdapter(listClickListener)
+        viewModel.setAdapter(listClickListener)
+        sharedViewModel.onClick = viewModel.search
     }
 
     private val listClickListener = object : OnItemClickListener {
-        override fun onClick(v: View?, item: User.Item, isCheck: Boolean, position: Int) {
+        override fun onClick(v: View?, item: User.Item, position: Int) {
             when (v?.id) {
                 R.id.btn_item,
                 R.id.btn_favorites -> {
-                    if (isCheck) {
+                    if (item.favorites) {
                         sharedViewModel.addUser(item)
                     } else {
                         sharedViewModel.removeUser(item)

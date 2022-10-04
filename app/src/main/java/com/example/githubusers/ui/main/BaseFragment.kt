@@ -50,6 +50,5 @@ abstract class BindingFragment<B : ViewDataBinding, M : ViewModel> constructor(@
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.setVariable(BR.model, viewModel)
-        binding.setVariable(BR.rootModel, sharedViewModel)
     }
 }

@@ -29,7 +29,7 @@ class UsersRepositoryImpl @Inject constructor(
     override fun fetchList(rq: User.RQ): Flow<PagingData<User.Item>> {
         return Pager(
             config = PagingConfig(Constants.DEFAULT_LIMIT, enablePlaceholders = false),
-            pagingSourceFactory = { UsersSource(api, rq) }
+            pagingSourceFactory = { UsersSource(api, userDao, rq) }
         ).flow
     }
 

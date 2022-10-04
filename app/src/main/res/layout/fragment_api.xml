@@ -9,15 +9,11 @@
         <variable
             name="model"
             type="com.example.githubusers.ui.main.ApiViewModel" />
-
-        <variable
-            name="rootModel"
-            type="com.example.githubusers.MainViewModel" />
     </data>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_images"
-        adapter="@{rootModel.adapter}"
+        adapter="@{model.adapter}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
