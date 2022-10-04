@@ -7,5 +7,5 @@ object Constants {
         const val READ_TIMEOUT: Long = 30
     }
 
-    const val DEFAULT_LIMIT: Int = 20
+    const val DEFAULT_LIMIT: Int = 100
 }
