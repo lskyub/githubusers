@@ -1,9 +1,7 @@
 package com.example.githubusers.ui.main
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import com.example.githubusers.R
 import com.example.githubusers.adapter.OnItemClickListener
