@@ -3,6 +3,7 @@ package com.example.githubusers.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -37,9 +38,17 @@ class UserAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.also {
+            holder.binding.setVariable(
+                BR.isHeader, if (position == 0) {
+                    true
+                } else {
+                    getItem(position - 1)?.login?.substring(0, 1) != it.login.substring(0, 1)
+                }
+            )
             holder.binding.setVariable(BR.item, it)
             holder.binding.setVariable(BR.listener, object : View.OnClickListener {
                 override fun onClick(v: View?) {
+                    holder.favorites.isChecked = !holder.favorites.isChecked
                     if (::listener.isInitialized) {
                         getItem(holder.bindingAdapterPosition)?.id?.also {
                             listener.onClick(v, it)
@@ -57,5 +66,6 @@ class UserAdapter :
         LayoutInflater.from(parent.context).inflate(layoutResId, parent, false)
     ) {
         val binding: ViewDataBinding = DataBindingUtil.bind(itemView)!!
+        val favorites = binding.root.findViewById<CheckBox>(R.id.btn_favorites)
     }
 }

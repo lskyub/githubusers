@@ -4,9 +4,15 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="item"
             type="com.example.domain.model.User.Item" />
+
+        <variable
+            name="isHeader"
+            type="Boolean" />
 
         <variable
             name="listener"
@@ -14,17 +20,32 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_item"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content"
+        android:onClick="@{(v)->listener.onClick(v)}">
+
+        <TextView
+            android:id="@+id/attr_header"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#efefef"
+            android:paddingStart="16dp"
+            android:text="@{item.login.substring(0,1)}"
+            android:visibility="@{isHeader ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/avatar_url"
             url="@{item.avatar_url}"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/attr_header"
+            app:layout_goneMarginTop="0dp" />
 
         <TextView
             android:layout_width="0dp"
@@ -36,15 +57,15 @@
             app:layout_constraintStart_toEndOf="@+id/avatar_url"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <CheckBox
             android:id="@+id/btn_favorites"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:onClick="@{(v)->listener.onClick(v)}"
-            android:padding="10dp"
+            android:layout_marginEnd="16dp"
+            android:button="@drawable/star"
+            android:clickable="false"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/star" />
+            app:layout_constraintTop_toTopOf="@+id/avatar_url" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
