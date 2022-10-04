@@ -12,7 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import com.example.githubusers.MainActivity
 import com.example.githubusers.BR
-import com.example.githubusers.MainActivityViewModel
+import com.example.githubusers.MainViewModel
 
 abstract class BindingFragment<B : ViewDataBinding, M : ViewModel> constructor(@LayoutRes private val resourceId: Int) :
     Fragment() {
@@ -24,7 +24,7 @@ abstract class BindingFragment<B : ViewDataBinding, M : ViewModel> constructor(@
     /**
      * MainActivity에서 사용하는 ViewModel 객체로 데이터 공유 또는 공통 처리를 위해 사용
      */
-    val sharedViewModel: MainActivityViewModel by activityViewModels()
+    val sharedViewModel: MainViewModel by activityViewModels()
 
     /**
      * 상속하는 Fragment 에서 activity에 접근할때 중복코드를 줄이기 위한 변수

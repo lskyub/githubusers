@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_main">
+    app:startDestination="@id/navigation_api">
 
     <fragment
-        android:id="@+id/navigation_main"
-        android:name="com.example.githubusers.ui.main.MainFragment"
+        android:id="@+id/navigation_api"
+        android:name="com.example.githubusers.ui.main.ApiFragment"
         android:label="MainFragment">
         <action
-            android:id="@+id/action_navigation_main_to_navigation_local"
+            android:id="@+id/action_navigation_api_to_navigation_local"
             app:destination="@id/navigation_local" />
     </fragment>
 
@@ -19,7 +19,7 @@
         android:name="com.example.githubusers.ui.main.LocalFragment"
         android:label="LocalFragment">
         <action
-            android:id="@+id/action_navigation_local_to_navigation_main"
-            app:destination="@id/navigation_main" />
+            android:id="@+id/action_navigation_local_to_navigation_api"
+            app:destination="@id/navigation_api" />
     </fragment>
 </navigation>

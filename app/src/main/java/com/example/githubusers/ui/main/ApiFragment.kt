@@ -6,13 +6,13 @@ import androidx.fragment.app.viewModels
 import com.example.domain.model.User
 import com.example.githubusers.R
 import com.example.githubusers.adapter.OnItemClickListener
-import com.example.githubusers.databinding.FragmentMainBinding
+import com.example.githubusers.databinding.FragmentApiBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : BindingFragment<FragmentMainBinding, MainViewModel>(R.layout.fragment_main) {
+class ApiFragment : BindingFragment<FragmentApiBinding, ApiViewModel>(R.layout.fragment_api) {
 
-    override val viewModel: MainViewModel by viewModels()
+    override val viewModel: ApiViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

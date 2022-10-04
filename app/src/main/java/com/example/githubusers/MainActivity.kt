@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
-    val viewModel: MainActivityViewModel by viewModels()
+    val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +27,17 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        binding.setVariable(BR.model, viewModel)
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         viewModel.moveValue.observe(this) {
             if (it == R.id.btn_api) {
-                navigateSafe(R.id.action_navigation_local_to_navigation_main)
+                navigateSafe(R.id.action_navigation_local_to_navigation_api)
             } else if (it == R.id.btn_local) {
-                navigateSafe(R.id.action_navigation_main_to_navigation_local)
+                navigateSafe(R.id.action_navigation_api_to_navigation_local)
             }
         }
     }

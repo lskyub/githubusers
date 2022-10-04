@@ -3,14 +3,11 @@ package com.example.githubusers.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import com.example.domain.model.User
 import com.example.githubusers.R
 import com.example.githubusers.adapter.OnItemClickListener
 import com.example.githubusers.databinding.FragmentLocalBinding
-import com.example.githubusers.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LocalFragment :

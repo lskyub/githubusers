@@ -8,11 +8,11 @@
 
         <variable
             name="model"
-            type="com.example.githubusers.ui.main.MainViewModel" />
+            type="com.example.githubusers.ui.main.ApiViewModel" />
 
         <variable
             name="rootModel"
-            type="com.example.githubusers.MainActivityViewModel" />
+            type="com.example.githubusers.MainViewModel" />
     </data>
 
     <androidx.recyclerview.widget.RecyclerView
