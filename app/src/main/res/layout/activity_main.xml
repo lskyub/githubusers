@@ -27,6 +27,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="2.5dp"
                 android:layout_weight="1"
+                android:backgroundTint="@{model.moveValue == 0 || model.moveValue == @id/btn_api ? @color/purple_700 : @color/purple_200}"
+                android:onClick="@{(v)->model.onClick(v)}"
                 android:text="API" />
 
             <Button
@@ -35,6 +37,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="2.5dp"
                 android:layout_weight="1"
+                android:backgroundTint="@{model.moveValue == @id/btn_local ? @color/purple_700 : @color/purple_200}"
+                android:onClick="@{(v)->model.onClick(v)}"
                 android:text="로컬" />
         </LinearLayout>
 
