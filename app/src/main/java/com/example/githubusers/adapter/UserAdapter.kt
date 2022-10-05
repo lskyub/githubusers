@@ -20,6 +20,9 @@ interface OnItemClickListener {
 
 class UserAdapter :
     PagingDataAdapter<User.Item, UserAdapter.ViewHolder>(
+        /**
+         * DiffUtil 리스트 아이템을 비교하여 다른 아이템만 업데이트 하기위해 사용
+         */
         object : DiffUtil.ItemCallback<User.Item>() {
             override fun areItemsTheSame(oldItem: User.Item, newItem: User.Item): Boolean {
                 return oldItem.id == newItem.id && oldItem.login == newItem.login
@@ -39,6 +42,10 @@ class UserAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.also { item ->
             holder.binding.setVariable(
+                /**
+                 * 0번 위치는 항상 헤더를 포함하고
+                 * 이전 데이터랑 현재의 데이터의 시작이 다를 경우 헤더를 표현
+                 */
                 BR.isHeader, if (position == 0) {
                     true
                 } else {
